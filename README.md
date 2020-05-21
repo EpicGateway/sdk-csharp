@@ -63,7 +63,7 @@ All interactions with the API will be handled through the instance of the
 HTTP requests.
 
 All methods and models within the SDK have an analogous relationship to the 
-methods and object structures defined by the [EpicPay API Specification.][1]
+methods and object structures defined by the [EpicPay API Specification.][2]
 If you ever need clarification on how a method works, what parameters it
 requires, or what are valid for those parameters, the API specification is the 
 best source for that information.
