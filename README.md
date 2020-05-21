@@ -104,19 +104,19 @@ SaleRequest request = new SaleRequest
     CreditCard = new CreditCard
     {
         CardNumber = "****1111",
-        CardHolderName = "William Smith",
+        CardHolderName = "John Smith",
         ExpMonth = "01",
         ExpYear = "22",
         CVV = "456"
     },
     BillingAddress = new BillingAddress()
     {
-        FirstName = "William",
+        FirstName = "Mary",
         LastName = "Smith",
         Address = "1 Main St.",
         Address2 = "Suite 201",
         City = "Burlington",
-        CompanyName = "Texas Realtors",
+        CompanyName = "Big Company",
         StateProvince = "MA",
         PostalCode = "01803-3747",
         Email = "person@example.com",
