@@ -68,8 +68,6 @@ If you ever need clarification on how a method works, what parameters it
 requires, or what are valid for those parameters, the API specification is the 
 best source for that information.
 
-[1]: https://developer.epicpay.com/Docs/PaymentAPI#Api_Intro
-
 ### Differences to the API
 
 Although the SDK mostly mirrors the API's structure, there are a few subtle 
@@ -85,10 +83,8 @@ type.
 
 Each of the public methods exposed by the `EpicGateway` class corresponds to
 one of the methods or transaction types you can send to the EpicPay API.
-You will likely want to reference the [API documentation][1] when crafting
+You will likely want to reference the [API documentation][2] when crafting
 your requests for the first time.
-
-[1]: https://developer.epicpay.com/Docs/PaymentAPI#Api_Intro
 
 You'll find all the request and response models for this SDK in the namespace
 `Epic.GatewaySDK.Models`. Each request takes as input its own request object
