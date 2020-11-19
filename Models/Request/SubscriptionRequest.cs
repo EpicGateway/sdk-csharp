@@ -84,6 +84,9 @@ namespace Epic.GatewaySDK.Models
 
         [DataMember(Name = "billing_address", IsRequired = false, EmitDefaultValue = false)]
         public BillingAddress BillingAddress { get; set; }
+
+        [DataMember(Name = "epic_token", EmitDefaultValue = false)]
+        public EpicToken EpicToken { get; set; }
     }
 
     [DataContract]
@@ -154,6 +157,7 @@ namespace Epic.GatewaySDK.Models
 
         [DataMember(Name = "sec_code", EmitDefaultValue = true)]
         public string EntryClass { get; set; }
+
         [DataMember(Name = "entry_description", EmitDefaultValue = false)]
         public string EntryDescription { get; set; }
 
@@ -162,6 +166,9 @@ namespace Epic.GatewaySDK.Models
 
         [DataMember(Name = "billing_address", IsRequired = false, EmitDefaultValue = false)]
         public BillingAddress BillingAddress { get; set; }
+
+        [DataMember(Name = "epic_token", EmitDefaultValue = false)]
+        public EpicToken EpicToken { get; set; }
     }
 
     [DataContract]

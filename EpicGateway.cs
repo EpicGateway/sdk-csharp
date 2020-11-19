@@ -129,7 +129,7 @@ namespace Epic.GatewaySDK
         public async Task<MultiUseTokenResponse> RegisterToken(MultiUseTokenizationRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<MultiUseTokenizationRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "RegisterToken");
+            string jsonResponse = await PostRequest(jsonRequest, "registertoken");
             return CommonService.JsonDeSerializer<MultiUseTokenResponse>(jsonResponse);
         }
 
@@ -138,7 +138,7 @@ namespace Epic.GatewaySDK
         public async Task<MultiUseTokenExtResponse> RegisterTokenExt(MultiUseTokenizationRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<MultiUseTokenizationRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "RegisterTokenExt");
+            string jsonResponse = await PostRequest(jsonRequest, "registertokenext");
             return CommonService.JsonDeSerializer<MultiUseTokenExtResponse>(jsonResponse);
         }
 
@@ -146,7 +146,7 @@ namespace Epic.GatewaySDK
         public async Task<JwtTokenResponse> RequestJWT(JwtTokenizationRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<JwtTokenizationRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "RequestJWT");
+            string jsonResponse = await PostRequest(jsonRequest, "requestjwt");
             return CommonService.JsonDeSerializer<JwtTokenResponse>(jsonResponse);
         }
 
@@ -154,7 +154,7 @@ namespace Epic.GatewaySDK
         public async Task<TokenResponse> RegisterOneTimeToken(string jwt, OneTimeTokenRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<OneTimeTokenRequest>(req);
-            string jsonResponse = await PostRequestUsingBearerAuth(jsonRequest, "RegisterOneTimeToken", jwt);
+            string jsonResponse = await PostRequestUsingBearerAuth(jsonRequest, "registeronetimetoken", jwt);
             return CommonService.JsonDeSerializer<TokenResponse>(jsonResponse);
         }
 
@@ -162,7 +162,7 @@ namespace Epic.GatewaySDK
         public async Task<WalletResponse> AddWalletItem(AddWalletRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<AddWalletRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "AddWalletItem");
+            string jsonResponse = await PostRequest(jsonRequest, "addwalletitem");
             return CommonService.JsonDeSerializer<WalletResponse>(jsonResponse);
         }
 
@@ -170,7 +170,7 @@ namespace Epic.GatewaySDK
         public async Task<WalletResponse> EditWalletItem(EditWalletRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<EditWalletRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "EditWalletItem", req.WalletID);
+            string jsonResponse = await PostRequest(jsonRequest, "editwalletitem", req.WalletID);
             return CommonService.JsonDeSerializer<WalletResponse>(jsonResponse);
         }
 
@@ -178,7 +178,7 @@ namespace Epic.GatewaySDK
         public async Task<WalletResponse> DeleteWalletItem(DeleteWalletRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<DeleteWalletRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "DeleteWalletItem", req.WalletID);
+            string jsonResponse = await PostRequest(jsonRequest, "deletewalletitem", req.WalletID);
             return CommonService.JsonDeSerializer<WalletResponse>(jsonResponse);
         }
 
@@ -186,7 +186,7 @@ namespace Epic.GatewaySDK
         public async Task<CustomerResponse> EditCustomer(EditCustomerRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<EditCustomerRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "EditCustomer", req.CustomerID);
+            string jsonResponse = await PostRequest(jsonRequest, "editcustomer", req.CustomerID);
             return CommonService.JsonDeSerializer<CustomerResponse>(jsonResponse);
         }
 
@@ -194,7 +194,7 @@ namespace Epic.GatewaySDK
         public async Task<SubscriptionResponse> AddSubscription(AddSubscriptionRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<AddSubscriptionRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "AddSubscription");
+            string jsonResponse = await PostRequest(jsonRequest, "addsubscription");
             return CommonService.JsonDeSerializer<SubscriptionResponse>(jsonResponse);
         }
 
@@ -202,7 +202,7 @@ namespace Epic.GatewaySDK
         public async Task<SubscriptionResponse> EditSubscription(EditSubscriptionRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<EditSubscriptionRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "EditSubscription", req.SubscriptionID);
+            string jsonResponse = await PostRequest(jsonRequest, "editsubscription", req.SubscriptionID);
             return CommonService.JsonDeSerializer<SubscriptionResponse>(jsonResponse);
         }
 
@@ -210,7 +210,7 @@ namespace Epic.GatewaySDK
         public async Task<SubscriptionResponse> DeleteSubscription(DeleteSubscriptionRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<DeleteSubscriptionRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "DeleteSubscription", req.SubscriptionID);
+            string jsonResponse = await PostRequest(jsonRequest, "deletesubscription", req.SubscriptionID);
             return CommonService.JsonDeSerializer<SubscriptionResponse>(jsonResponse);
         }
 
@@ -218,7 +218,7 @@ namespace Epic.GatewaySDK
         public async Task<SuspendSubscriptionResponse> SuspendSubscription(SuspendSubscriptionRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<SuspendSubscriptionRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "Subscription/Suspend", req.SubscriptionID);
+            string jsonResponse = await PostRequest(jsonRequest, "subscription/suspend", req.SubscriptionID);
             return CommonService.JsonDeSerializer<SuspendSubscriptionResponse>(jsonResponse);
         }
 
@@ -226,7 +226,7 @@ namespace Epic.GatewaySDK
         public async Task<SuspendSubscriptionResponse> UnsuspendSubscription(UnsuspendSubscriptionRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<UnsuspendSubscriptionRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "Subscription/Unsuspend", req.SubscriptionID);
+            string jsonResponse = await PostRequest(jsonRequest, "subscription/unsuspend", req.SubscriptionID);
             return CommonService.JsonDeSerializer<SuspendSubscriptionResponse>(jsonResponse);
         }
 
@@ -234,7 +234,7 @@ namespace Epic.GatewaySDK
         public async Task<PaymentResponse> GetTransaction(GetTransactionRequest req)
         {
             string jsonRequest = CommonService.JsonSerializer<GetTransactionRequest>(req);
-            string jsonResponse = await PostRequest(jsonRequest, "GetTransaction", req.Id);
+            string jsonResponse = await PostRequest(jsonRequest, "gettransaction", req.Id);
             return CommonService.JsonDeSerializer<PaymentResponse>(jsonResponse);
         }
 

@@ -3,6 +3,58 @@
 namespace Epic.GatewaySDK.Models
 {
     [DataContract]
+    public class EpicToken
+    {
+        public EpicToken(Wallet wallet)
+        {
+            TokenType = "wallet_token";
+            TokenData = wallet.WalletID;
+        }
+        public EpicToken(Token token)
+        {
+            TokenData = token.TokenNumber;
+            AccountHolderName = token.AccountHolderName;
+
+            if (token.ExpYear != null && token.ExpMonth != null)
+            {
+                TokenType = "card_token";
+                ExpMonth = token.ExpMonth;
+                ExpYear = token.ExpYear;
+            }
+            else
+            {
+                TokenType = "echeck_token";
+            }
+        }
+
+        // Valid types: "card_token", "echeck_token", "wallet_token", "checkout_token"
+        [DataMember(Name = "token_type", EmitDefaultValue = false)]
+        public string TokenType { get; set; }
+
+        // For card_token and echeck_token, TokenData is the token number
+        // For wallet_token, TokenData is the wallet id
+        // For checkout_token, TokenData is the encrypted json payload of the checkout object
+        [DataMember(Name = "token_data")]
+        public string TokenData { get; set; }
+
+        // Optional: required for credit card and echeck token
+        [DataMember(Name = "account_holder_name", EmitDefaultValue = false)]
+        public string AccountHolderName { get; set; }
+
+        // Optional: required for credit card token
+        [DataMember(Name = "exp_month", EmitDefaultValue = false)]
+        public string ExpMonth { get; set; }
+
+        // Optional: required for credit card token
+        [DataMember(Name = "exp_year", EmitDefaultValue = false)]
+        public string ExpYear { get; set; }
+
+        // Optional: applicable to card_token or card wallet
+        [DataMember(Name = "cvv", EmitDefaultValue = false)]
+        public string Cvv { get; set; }
+    }
+
+    [DataContract]
     public class BillingAddress
     {
         [DataMember(Name = "first_name")]

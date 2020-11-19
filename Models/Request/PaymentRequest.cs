@@ -9,7 +9,7 @@ namespace Epic.GatewaySDK.Models
     public class AuthorizationRequest
     {
         [DataMember(Name = "transaction_type", IsRequired = true)]
-        public readonly string transactionType = "Authorize";
+        public readonly string transactionType = "authorize";
 
         [DataMember(Name = "method", IsRequired = true)]
         public string Method { get; set; }
@@ -55,6 +55,9 @@ namespace Epic.GatewaySDK.Models
 
         [DataMember(Name = "cof_processing_type", EmitDefaultValue = false)]
         public string CofProcessingType { get; set; }
+
+        [DataMember(Name = "epic_token", EmitDefaultValue = false)]
+        public EpicToken EpicToken { get; set; }
     }
 
     [DataContract]
@@ -103,6 +106,9 @@ namespace Epic.GatewaySDK.Models
 
         [DataMember(Name = "cof_processing_type", EmitDefaultValue = false)]
         public string CofProcessingType { get; set; }
+
+        [DataMember(Name = "epic_token", EmitDefaultValue = false)]
+        public EpicToken EpicToken { get; set; }
     }
 
     [DataContract]
@@ -145,6 +151,9 @@ namespace Epic.GatewaySDK.Models
 
         [DataMember(Name = "token", EmitDefaultValue = false)]
         public Token Token { get; set; }
+
+        [DataMember(Name = "epic_token", EmitDefaultValue = false)]
+        public EpicToken EpicToken { get; set; }
     }
 
     [DataContract]
@@ -238,6 +247,8 @@ namespace Epic.GatewaySDK.Models
         [DataMember(Name = "entry_description", EmitDefaultValue = false)]
         public string EntryDescription { get; set; }
 
+        [DataMember(Name = "epic_token", EmitDefaultValue = false)]
+        public EpicToken EpicToken { get; set; }
     }
 
     [DataContract]

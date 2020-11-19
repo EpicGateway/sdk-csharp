@@ -43,5 +43,8 @@ namespace Epic.GatewaySDK.Models
 
         [DataMember(Name = "token", EmitDefaultValue = false)]
         public Token Token { get; set; }
+
+        [DataMember(Name = "epic_token", EmitDefaultValue = false)]
+        public EpicToken EpicToken { get; set; }
     }
 }

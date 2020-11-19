@@ -35,6 +35,8 @@ namespace Epic.GatewaySDK.Models
         [DataMember(Name = "billing_address", IsRequired = false, EmitDefaultValue = false)]
         public BillingAddress BillingAddress { get; set; }
 
+        [DataMember(Name = "epic_token", EmitDefaultValue = false)]
+        public EpicToken EpicToken { get; set; }
     }
 
     [DataContract]
