@@ -86,6 +86,8 @@ namespace Epic.GatewaySDK.Models
         [DataMember(Name = "wallet", EmitDefaultValue = false)]
         public Wallet Wallet { get; set; }
 
+        [DataMember(Name = "authentication_response", EmitDefaultValue = false)]
+        public string AuthenticationResponse { get; set; }
        }
 
    

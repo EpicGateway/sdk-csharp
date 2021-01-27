@@ -1,10 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Security.Authentication;
 
 namespace Epic.GatewaySDK.Models
 {
     [DataContract]
     public class EpicToken
     {
+        public EpicToken() { }
         public EpicToken(Wallet wallet)
         {
             TokenType = "wallet_token";
@@ -27,7 +30,7 @@ namespace Epic.GatewaySDK.Models
             }
         }
 
-        // Valid types: "card_token", "echeck_token", "wallet_token", "checkout_token"
+        // Valid types: "card_token", "echeck_token", "wallet_token", "checkout_token", "apple_pay"
         [DataMember(Name = "token_type", EmitDefaultValue = false)]
         public string TokenType { get; set; }
 
@@ -55,7 +58,7 @@ namespace Epic.GatewaySDK.Models
     }
 
     [DataContract]
-    public class BillingAddress
+    public class Contact
     {
         [DataMember(Name = "first_name")]
         public string FirstName { get; set; }
@@ -79,6 +82,16 @@ namespace Epic.GatewaySDK.Models
         public Phone Phone { get; set; }
         [DataMember(Name = "email")]
         public string Email { get; set; }
+    }
+
+    [DataContract]
+    public class BillingAddress : Contact
+    {
+    }
+
+    [DataContract]
+    public class ShipppingAddress : Contact
+    {
     }
 
     [DataContract]
@@ -140,6 +153,9 @@ namespace Epic.GatewaySDK.Models
         [DataMember(Name = "card_type", EmitDefaultValue = false)]
         public string CardType { get; set; }
 
+        // 3DS Authentication Information
+        [DataMember(Name = "authentication", EmitDefaultValue = false)]
+        public Authentication3DS Authentication { get; set; }
     }
 
     [DataContract]
@@ -190,5 +206,104 @@ namespace Epic.GatewaySDK.Models
 
         [DataMember(Name = "customer_id", EmitDefaultValue = false)]
         public int CustomerId { get; set; }
+    }
+
+    [DataContract]
+    public class OrderDetails
+    {
+        [DataMember(Name = "order_number")]
+        public string OrderNumber { get; set; }
+
+        [DataMember(Name = "discount_amount")]
+        public int DiscountAmount { get; set; }
+
+        [DataMember(Name = "shipping_amount")]
+        public int ShippingAmount { get; set; }
+
+        [DataMember(Name = "duty_amount")]
+        public int DutyAmount { get; set; }
+
+        [DataMember(Name = "is_tax_exempt")]
+        public string IsTaxExempt { get; set; }
+
+        [DataMember(Name = "ship_from_postal_code")]
+        public string ShipFromPostalCode { get; set; }
+
+        [DataMember(Name = "invoice_number")]
+        public string InvoiceNumber { get; set; }
+
+        [DataMember(Name = "order_date")]
+        public string OrderDate { get; set; }
+
+        [DataMember(Name = "line_items")]
+        public List<LineItem> LineItems { get; set; }
+
+        [DataMember(Name = "tax_items", IsRequired = true)]
+        public List<TaxItem> TaxItems { get; set; }
+    }
+
+    [DataContract]
+    public class LineItem
+    {
+        [DataMember(Name = "description", IsRequired = true)]
+        public string Description { get; set; }
+
+        [DataMember(Name = "commodity_code", IsRequired = true)]
+        public string CommodityCode { get; set; }
+
+        [DataMember(Name = "product_code", IsRequired = true)]
+        public string ProductCode { get; set; }
+
+        [DataMember(Name = "discount_amount", IsRequired = true)]
+        public int DiscountAmount { get; set; }
+
+        [DataMember(Name = "total_amount", IsRequired = true)]
+        public int TotalAmount { get; set; }
+
+        [DataMember(Name = "quantity", IsRequired = true)]
+        public decimal Quantity { get; set; }
+
+        [DataMember(Name = "unit_cost", IsRequired = true)]
+        public int UnitCost { get; set; }
+
+        [DataMember(Name = "unit_of_measure", IsRequired = true)]
+        public string UnitOfMeasure { get; set; }
+
+        [DataMember(Name = "tax_items", IsRequired = true)]
+        public List<TaxItem> TaxItems { get; set; }
+    }
+
+    [DataContract]
+    public class TaxItem
+    {
+        [DataMember(Name = "tax_type")]
+        public string TaxType { get; set; }
+
+        [DataMember(Name = "tax_id", IsRequired = true)]
+        public string TaxId { get; set; }
+
+        [DataMember(Name = "tax_amount", IsRequired = true)]
+        public int TaxAmount { get; set; }
+
+        [DataMember(Name = "tax_rate")]
+        public decimal TaxRate { get; set; }
+    }
+
+    [DataContract]
+    public class Authentication3DS
+    {
+        [DataMember(Name = "cryptogram")]
+        public string Cryptogram { get; set; }
+
+        // AKA: XID
+        [DataMember(Name = "authentication_id")]
+        public string AuthenticationId { get; set; }
+
+        [DataMember(Name = "eci_indicator")]
+        public string ECIIndicator { get; set; }
+
+        // Values: "network_3ds_v1", "apple_pay", "google_pay"
+        [DataMember(Name = "source")]
+        public string CryptogramSource { get; set; }
     }
 }

@@ -101,6 +101,9 @@ namespace Epic.GatewaySDK.Models
         [DataMember(Name = "billing_address", EmitDefaultValue = false)]
         public BillingAddress BillingAddress { get; set; }
 
+        [DataMember(Name = "shipping_address", EmitDefaultValue = false)]
+        public ShipppingAddress ShipppingAddress { get; set; }
+
         [DataMember(Name = "network_transaction_id", EmitDefaultValue = false)]
         public string NetworkTransactionID { get; set; }
 
@@ -109,6 +112,9 @@ namespace Epic.GatewaySDK.Models
 
         [DataMember(Name = "epic_token", EmitDefaultValue = false)]
         public EpicToken EpicToken { get; set; }
+
+        [DataMember(Name = "order_details", EmitDefaultValue = false)]
+        public OrderDetails OrderDetails { get; set; }
     }
 
     [DataContract]
