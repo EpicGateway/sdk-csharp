@@ -2,8 +2,8 @@
 
 ## Introduction
 
-The EpicPay C# SDK can help you get a quick start when working with the EpicPay
-payments API.
+The EpicPay Gateway C# SDK can help you get a quick start when working with the EpicPay
+Gateway Payments API.
 
 This SDK was written against .Net Standard 2.0, and as such should work against
 most modern compliant .Net implementations, including .Net Core > 2.0 and .Net
@@ -12,10 +12,10 @@ Framework > 4.6.1.
 ## Creating API Keys
 
 Before starting with the SDK, you will need to create an API key online at 
-[secure.epicpay.com][1]. For up-to-date documentation
+[https://secure.epicpay.com/merchant/][1]. For up-to-date documentation
 on this process, please refer to [our online documentation][2].
 
-[1]: https://secure.epicpay.com
+[1]: https://secure.epicpay.com/merchant/
 [2]: https://developer.epicpay.com/Docs/PaymentAPI#Api_Intro
 
 ## Adding the SDK to your project
@@ -63,7 +63,7 @@ All interactions with the API will be handled through the instance of the
 HTTP requests.
 
 All methods and models within the SDK have an analogous relationship to the 
-methods and object structures defined by the [EpicPay API Specification.][2]
+methods and object structures defined by the [EpicPay Gateway API Specification.][2]
 If you ever need clarification on how a method works, what parameters it
 requires, or what are valid for those parameters, the API specification is the 
 best source for that information.
@@ -82,7 +82,7 @@ type.
 ### General Pattern
 
 Each of the public methods exposed by the `EpicGateway` class corresponds to
-one of the methods or transaction types you can send to the EpicPay API.
+one of the methods or transaction types you can send to the Payment API.
 You will likely want to reference the [API documentation][2] when crafting
 your requests for the first time.
 
@@ -125,7 +125,7 @@ SaleResponse response = await _gw.Sale(request);
 
 ### Error Handling
 
-The EpicPay SDK only throws exceptions for network-related errors, and does not
+The EpicPay Gateway C# SDK only throws exceptions for network-related errors, and does not
 throw exceptions for errors returned by the API. Instead, you will need to check
 for errors returned by the API by inspecting `Status.ResponseCode` in the
 response object itself.
